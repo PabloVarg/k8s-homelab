@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: plex
+  namespace: default
+  labels:
+    app: plex
+spec:
+  selector:
+    matchLabels:
+      app: plex
+  replicas: 1
+  template:
+    metadata:
+      annotations:
+        kubectl.kubernetes.io/default-container:  plex
+      labels:
+        app: plex
+    spec:
+      hostNetwork: true
+      containers:
+      - name: plex
+        image: "lscr.io/linuxserver/plex:latest"
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          tcpSocket:
+            port: 32400
+          initialDelaySeconds: 60
+          periodSeconds: 5
+        ports:
+        - containerPort: 32400
+          name: plex
+        envFrom:
+          - configMapRef:
+              name: plex
+      restartPolicy: Always
