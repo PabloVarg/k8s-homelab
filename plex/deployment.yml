@@ -18,10 +18,11 @@ spec:
         app: plex
     spec:
       hostNetwork: true
+      restartPolicy: Always
       containers:
       - name: plex
-        image: "lscr.io/linuxserver/plex:latest"
-        imagePullPolicy: IfNotPresent
+        image: lscr.io/linuxserver/plex:latest
+        imagePullPolicy: Always
         livenessProbe:
           tcpSocket:
             port: 32400
@@ -30,7 +31,20 @@ spec:
         ports:
         - containerPort: 32400
           name: plex
+        volumeMounts:
+          - name: media
+            mountPath: /media
+          - name: config
+            mountPath: /config
         envFrom:
           - configMapRef:
               name: plex
-      restartPolicy: Always
+      volumes:
+        - name: media
+          hostPath:
+            path: /mnt/user/Downloads/media
+            type: DirectoryOrCreate
+        - name: config
+          hostPath:
+            path: /mnt/user/appdata/plex
+            type: DirectoryOrCreate
