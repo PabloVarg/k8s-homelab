@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: homarr
+  namespace: default
+  labels:
+    app: homarr
+spec:
+  selector:
+    matchLabels:
+      app: homarr
+  replicas: 1
+  template:
+    metadata:
+      annotations:
+        kubectl.kubernetes.io/default-container:  homarr
+      labels:
+        app: homarr
+    spec:
+      hostNetwork: true
+      restartPolicy: Always
+      containers:
+      - name: homarr
+        image: ghcr.io/homarr-labs/homarr:latest
+        imagePullPolicy: Always
+        livenessProbe:
+          tcpSocket:
+            port: 32400
+          initialDelaySeconds: 60
+          periodSeconds: 5
+        ports:
+        - containerPort: 7575
+          name: homarr
+        volumeMounts:
+          - name: config
+            mountPath: /appdata
+        env:
+          - name: SECRET_ENCRYPTION_KEY
+            valueFrom:
+              secretKeyRef:
+                name: homarr
+                key: SECRET_ENCRYPTION_KEY
+      volumes:
+        - name: config
+          hostPath:
+            path: /mnt/user/appdata/homarr
+            type: DirectoryOrCreate

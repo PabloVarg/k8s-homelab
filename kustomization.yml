@@ -1,2 +1,7 @@
 resources:
   - plex
+  - homarr
+secretGenerator:
+  - name: homarr
+    envs:
+      - .env
