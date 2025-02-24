@@ -1,6 +1,7 @@
 resources:
   - plex
   - homarr
+  - kavita
 secretGenerator:
   - name: homarr
     envs:

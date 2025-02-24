@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kavita
+  namespace: default
+  labels:
+    app: kavita
+spec:
+  selector:
+    matchLabels:
+      app: kavita
+  replicas: 1
+  template:
+    metadata:
+      annotations:
+        kubectl.kubernetes.io/default-container:  kavita
+      labels:
+        app: kavita
+    spec:
+      hostNetwork: true
+      restartPolicy: Always
+      containers:
+      - name: kavita
+        image: lscr.io/linuxserver/kavita:latest
+        imagePullPolicy: Always
+        livenessProbe:
+          tcpSocket:
+            port: 5000
+          initialDelaySeconds: 60
+          periodSeconds: 5
+        ports:
+        - containerPort: 5000
+          name: kavita
+        volumeMounts:
+          - name: media
+            mountPath: /media
+          - name: config
+            mountPath: /config
+        envFrom:
+          - configMapRef:
+              name: kavita
+      volumes:
+        - name: media
+          hostPath:
+            path: /mnt/user/Downloads/calibre/Calibre Library
+            type: DirectoryOrCreate
+        - name: config
+          hostPath:
+            path: /mnt/user/appdata/kavita
+            type: DirectoryOrCreate
