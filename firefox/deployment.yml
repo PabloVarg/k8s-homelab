@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: firefox
+  namespace: default
+  labels:
+    app: firefox
+spec:
+  selector:
+    matchLabels:
+      app: firefox
+  replicas: 1
+  template:
+    metadata:
+      annotations:
+        kubectl.kubernetes.io/default-container:  firefox
+      labels:
+        app: firefox
+    spec:
+      hostNetwork: true
+      restartPolicy: Always
+      containers:
+      - name: firefox
+        image: lscr.io/linuxserver/firefox:latest
+        imagePullPolicy: Always
+        livenessProbe:
+          tcpSocket:
+            port: 3000
+          initialDelaySeconds: 60
+          periodSeconds: 5
+        ports:
+        - containerPort: 3000
+          name: firefox
+        volumeMounts:
+          - name: config
+            mountPath: /config
+          - name: shm
+            mountPath: /dev/shm
+        envFrom:
+          - configMapRef:
+              name: firefox
+      volumes:
+        - name: config
+          hostPath:
+            path: /mnt/user/appdata/firefox
+            type: DirectoryOrCreate
+        - name: shm
+          emptyDir:
+            medium: Memory

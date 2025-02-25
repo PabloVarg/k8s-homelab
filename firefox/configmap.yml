@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: firefox
+  namespace: default
+data:
+  PUID: "1000"
+  PGID: "1000"
+  TZ: "Mexico/General"
+  FIREFOX_CLI: ""

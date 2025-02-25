@@ -3,6 +3,7 @@ resources:
   - homarr
   - kavita
   - delugevpn
+  - firefox
 secretGenerator:
   - name: env-secrets
     envs:
