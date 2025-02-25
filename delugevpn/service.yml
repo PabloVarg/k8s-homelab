@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: delugevpn
+  namespace: default
+spec:
+  selector:
+    app: delugevpn
+  type: LoadBalancer
+  ports:
+  - name: delugevpn
+    protocol: TCP
+    port: 8112
+    targetPort: delugeweb
+  - name: privoxy
+    protocol: TCP
+    port: 8118
+    targetPort: privoxy

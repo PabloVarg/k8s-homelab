@@ -2,6 +2,7 @@ resources:
   - plex
   - homarr
   - kavita
+  - delugevpn
 secretGenerator:
   - name: env-secrets
     envs:

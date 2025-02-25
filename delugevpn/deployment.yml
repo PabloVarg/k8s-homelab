@@ -1,0 +1,73 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: delugevpn
+  namespace: default
+  labels:
+    app: delugevpn
+spec:
+  selector:
+    matchLabels:
+      app: delugevpn
+  replicas: 0
+  template:
+    metadata:
+      annotations:
+        kubectl.kubernetes.io/default-container:  delugevpn
+      labels:
+        app: delugevpn
+    spec:
+      restartPolicy: Always
+      containers:
+      - name: delugevpn
+        image: binhex/arch-delugevpn
+        imagePullPolicy: Always
+        livenessProbe:
+          tcpSocket:
+            port: 8112
+          initialDelaySeconds: 60
+          periodSeconds: 5
+        ports:
+        - containerPort: 8112
+          name: delugeweb
+        - containerPort: 8118
+          name: privoxy
+        volumeMounts:
+          - name: config
+            mountPath: /config
+          - name: torrents
+            mountPath: /data
+          - name: localtime
+            mountPath: /etc/localtime
+        envFrom:
+          - configMapRef:
+              name: delugevpn
+        env:
+          - name: VPN_USER
+            valueFrom:
+              secretKeyRef:
+                name: env-secrets
+                key: VPN_USER
+          - name: VPN_PASS
+            valueFrom:
+              secretKeyRef:
+                name: env-secrets
+                key: VPN_PASS
+        securityContext:
+          capabilities:
+            add:
+              - NET_ADMIN
+          privileged: true
+      volumes:
+        - name: torrents
+          hostPath:
+            path: /mnt/user/Downloads/torrents
+            type: DirectoryOrCreate
+        - name: config
+          hostPath:
+            path: /mnt/user/appdata/delugevpn
+            type: DirectoryOrCreate
+        - name: localtime
+          hostPath:
+            path: /etc/localtime
+            type: File
