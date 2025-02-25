@@ -38,7 +38,7 @@ spec:
           - name: SECRET_ENCRYPTION_KEY
             valueFrom:
               secretKeyRef:
-                name: homarr
+                name: env-secrets
                 key: SECRET_ENCRYPTION_KEY
       volumes:
         - name: config

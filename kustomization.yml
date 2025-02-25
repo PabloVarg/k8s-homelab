@@ -3,6 +3,6 @@ resources:
   - homarr
   - kavita
 secretGenerator:
-  - name: homarr
+  - name: env-secrets
     envs:
       - .env
