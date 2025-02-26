@@ -4,6 +4,7 @@ resources:
   - kavita
   - delugevpn
   - firefox
+  - clamav
 secretGenerator:
   - name: env-secrets
     envs:

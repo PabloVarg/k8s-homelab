@@ -1,0 +1,37 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: clamav
+  namespace: default
+  labels:
+    app: clamav
+spec:
+  template:
+    metadata:
+      name: clamav
+      labels:
+        app: clamav
+    spec:
+      containers:
+      - name: clamav
+        image: clamav/clamav:latest_base
+        command: ["sh"]
+        args: ["-c", "freshclam && clamscan /scan"]
+        volumeMounts:
+          - name: scan
+            mountPath: /scan
+          - name: signatures
+            mountPath: /var/lib/clamav
+        envFrom:
+          - configMapRef:
+              name: clamav
+      restartPolicy: OnFailure
+      volumes:
+        - name: scan
+          hostPath:
+            path: /mnt/user/Downloads/media/books
+            type: Directory
+        - name: signatures
+          hostPath:
+            path: /mnt/user/appdata/clamav
+            type: DirectoryOrCreate
