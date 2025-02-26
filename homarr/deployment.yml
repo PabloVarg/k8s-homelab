@@ -25,7 +25,7 @@ spec:
         imagePullPolicy: Always
         livenessProbe:
           tcpSocket:
-            port: 32400
+            port: 7575
           initialDelaySeconds: 60
           periodSeconds: 5
         ports:
