@@ -39,6 +39,7 @@ spec:
             mountPath: /data
           - name: localtime
             mountPath: /etc/localtime
+            readOnly: true
         envFrom:
           - configMapRef:
               name: delugevpn
