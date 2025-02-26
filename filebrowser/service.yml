@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: filebrowser
+  namespace: default
+spec:
+  selector:
+    app: filebrowser
+  type: LoadBalancer
+  ports:
+  - name: filebrowser
+    protocol: TCP
+    port: 8080
+    targetPort: filebrowser

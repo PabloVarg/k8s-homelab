@@ -5,6 +5,7 @@ resources:
   - delugevpn
   - firefox
   - clamav
+  - filebrowser
 secretGenerator:
   - name: env-secrets
     envs:
