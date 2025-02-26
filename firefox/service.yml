@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: firefox
+  namespace: default
+spec:
+  selector:
+    app: firefox
+  type: LoadBalancer
+  ports:
+  - name: firefox
+    protocol: TCP
+    port: 3030
+    targetPort: firefox
+  - name: firefox-https
+    protocol: TCP
+    port: 3031
+    targetPort: firefox-https

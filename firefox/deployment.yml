@@ -17,7 +17,6 @@ spec:
       labels:
         app: firefox
     spec:
-      hostNetwork: true
       restartPolicy: Always
       containers:
       - name: firefox
@@ -31,6 +30,8 @@ spec:
         ports:
         - containerPort: 3000
           name: firefox
+        - containerPort: 3001
+          name: firefox-https
         volumeMounts:
           - name: config
             mountPath: /config
