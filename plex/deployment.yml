@@ -36,6 +36,8 @@ spec:
             mountPath: /media
           - name: config
             mountPath: /config
+          - name: dri
+            mountPath: /dev/dri
         envFrom:
           - configMapRef:
               name: plex
@@ -48,3 +50,7 @@ spec:
           hostPath:
             path: /mnt/user/appdata/plex
             type: DirectoryOrCreate
+        - name: dri
+          hostPath:
+            path: /dev/dri
+            type: Directory
