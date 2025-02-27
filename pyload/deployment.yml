@@ -20,7 +20,7 @@ spec:
       restartPolicy: Always
       containers:
       - name: pyload
-        image: ghcr.io/linuxserver/pyload:version-5de90278
+        image: ghcr.io/linuxserver/pyload-ng:latest
         imagePullPolicy: Always
         livenessProbe:
           tcpSocket:
@@ -45,5 +45,5 @@ spec:
             type: DirectoryOrCreate
         - name: config
           hostPath:
-            path: /mnt/user/appdata/pyload
+            path: /mnt/user/appdata/pyload-ng
             type: DirectoryOrCreate
