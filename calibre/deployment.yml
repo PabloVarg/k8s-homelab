@@ -9,7 +9,7 @@ spec:
   selector:
     matchLabels:
       app: calibre
-  replicas: 1
+  replicas: 0
   template:
     metadata:
       annotations:
@@ -17,7 +17,6 @@ spec:
       labels:
         app: calibre
     spec:
-      hostNetwork: true
       restartPolicy: Always
       containers:
       - name: calibre
