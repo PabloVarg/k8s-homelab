@@ -37,14 +37,23 @@ spec:
             mountPath: /config
           - name: shm
             mountPath: /dev/shm
+          - name: dri
+            mountPath: /dev/dri
+            readOnly: true
         envFrom:
           - configMapRef:
               name: firefox
+        securityContext:
+          privileged: true
       volumes:
         - name: config
           hostPath:
-            path: /mnt/user/appdata/firefox
+            path: /mnt/user/appdata/firefox-hw
             type: DirectoryOrCreate
         - name: shm
           emptyDir:
             medium: Memory
+        - name: dri
+          hostPath:
+            path: /dev/dri
+            type: Directory
