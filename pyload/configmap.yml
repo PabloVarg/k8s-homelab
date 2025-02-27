@@ -4,7 +4,6 @@ metadata:
   name: pyload
   namespace: default
 data:
-  USER_ID: "1000"
-  GROUP_ID: "1000"
+  PUID: "99"
+  GUID: "100"
   TZ: "Mexico/General"
-  DARK_MODE: "1"
