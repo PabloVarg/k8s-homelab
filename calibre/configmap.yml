@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: pyload
+  namespace: default
+data:
+  PUID: "99"
+  PGID: "100"
+  TZ: "Mexico/General"

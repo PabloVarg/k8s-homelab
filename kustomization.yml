@@ -6,6 +6,7 @@ resources:
   - firefox
   - clamav
   - filebrowser
+  - calibre
 secretGenerator:
   - name: env-secrets
     envs:

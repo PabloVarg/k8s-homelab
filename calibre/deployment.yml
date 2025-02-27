@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: calibre
+  namespace: default
+  labels:
+    app: calibre
+spec:
+  selector:
+    matchLabels:
+      app: calibre
+  replicas: 1
+  template:
+    metadata:
+      annotations:
+        kubectl.kubernetes.io/default-container:  calibre
+      labels:
+        app: calibre
+    spec:
+      hostNetwork: true
+      restartPolicy: Always
+      containers:
+      - name: calibre
+        image: lscr.io/linuxserver/calibre:latest
+        imagePullPolicy: Always
+        livenessProbe:
+          tcpSocket:
+            port: 8080
+          initialDelaySeconds: 60
+          periodSeconds: 5
+        ports:
+        - containerPort: 8080
+          name: calibre
+        volumeMounts:
+          - name: media
+            mountPath: /downloads
+          - name: config
+            mountPath: /config
+        envFrom:
+          - configMapRef:
+              name: calibre
+      volumes:
+        - name: media
+          hostPath:
+            path: /mnt/user/Downloads/media/books
+            type: DirectoryOrCreate
+        - name: config
+          hostPath:
+            path: /mnt/user/Downloads/calibre
+            type: DirectoryOrCreate
