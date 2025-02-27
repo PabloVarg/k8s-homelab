@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: pyload
+  namespace: default
+data:
+  USER_ID: "1000"
+  GROUP_ID: "1000"
+  TZ: "Mexico/General"
+  DARK_MODE: "1"

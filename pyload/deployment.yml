@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pyload
+  namespace: default
+  labels:
+    app: pyload
+spec:
+  selector:
+    matchLabels:
+      app: pyload
+  replicas: 1
+  template:
+    metadata:
+      annotations:
+        kubectl.kubernetes.io/default-container:  pyload
+      labels:
+        app: pyload
+    spec:
+      restartPolicy: Always
+      containers:
+      - name: pyload
+        image: ghcr.io/linuxserver/pyload:version-5de90278
+        imagePullPolicy: Always
+        livenessProbe:
+          tcpSocket:
+            port: 8000
+          initialDelaySeconds: 60
+          periodSeconds: 5
+        ports:
+        - containerPort: 8000
+          name: pyload
+        volumeMounts:
+          - name: downloads
+            mountPath: /downloads
+          - name: config
+            mountPath: /config
+        envFrom:
+          - configMapRef:
+              name: pyload
+      volumes:
+        - name: downloads
+          hostPath:
+            path: /mnt/user/Downloads/downloads
+            type: DirectoryOrCreate
+        - name: config
+          hostPath:
+            path: /mnt/user/appdata/pyload
+            type: DirectoryOrCreate
