@@ -1,5 +1,8 @@
 {
   "*": {
     "make": "kubectl apply -k ."
+  },
+  "*job.yml": {
+    "make": "kubectl apply -k {dirname}"
   }
 }
