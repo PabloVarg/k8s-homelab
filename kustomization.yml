@@ -5,6 +5,7 @@ resources:
   - delugevpn
   - firefox
   - filebrowser
+  - filebrowser-downloads
   - calibre
   - pyload
 secretGenerator:
