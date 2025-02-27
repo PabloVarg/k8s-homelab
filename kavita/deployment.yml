@@ -17,7 +17,6 @@ spec:
       labels:
         app: kavita
     spec:
-      hostNetwork: true
       restartPolicy: Always
       containers:
       - name: kavita
