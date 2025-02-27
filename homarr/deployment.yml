@@ -17,7 +17,6 @@ spec:
       labels:
         app: homarr
     spec:
-      hostNetwork: true
       restartPolicy: Always
       containers:
       - name: homarr
