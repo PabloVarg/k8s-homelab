@@ -16,20 +16,17 @@ spec:
       - name: clamav
         image: clamav/clamav:latest_base
         command: ["sh"]
-        args: ["-c", "freshclam && clamscan /scan"]
+        args: ["-c", "freshclam && clamscan --recursive /scan"]
         volumeMounts:
           - name: scan
             mountPath: /scan
           - name: signatures
             mountPath: /var/lib/clamav
-        envFrom:
-          - configMapRef:
-              name: clamav
       restartPolicy: OnFailure
       volumes:
         - name: scan
           hostPath:
-            path: /mnt/user/Downloads/media/books
+            path: /mnt/user/Downloads/downloads
             type: Directory
         - name: signatures
           hostPath:
