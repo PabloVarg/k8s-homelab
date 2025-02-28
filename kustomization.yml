@@ -8,6 +8,7 @@ resources:
   - filebrowser-downloads
   - calibre
   - pyload
+  - prowlarr
 secretGenerator:
   - name: env-secrets
     envs:

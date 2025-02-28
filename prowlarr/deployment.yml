@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prowlarr
+  namespace: default
+  labels:
+    app: prowlarr
+spec:
+  selector:
+    matchLabels:
+      app: prowlarr
+  replicas: 0
+  template:
+    metadata:
+      annotations:
+        kubectl.kubernetes.io/default-container:  prowlarr
+      labels:
+        app: prowlarr
+    spec:
+      restartPolicy: Always
+      containers:
+      - name: prowlarr
+        image: lscr.io/linuxserver/prowlarr:latest
+        imagePullPolicy: Always
+        livenessProbe:
+          tcpSocket:
+            port: 9696
+          initialDelaySeconds: 60
+          periodSeconds: 5
+        ports:
+        - containerPort: 9696
+          name: prowlarr
+        volumeMounts:
+          - name: config
+            mountPath: /config
+        envFrom:
+          - configMapRef:
+              name: prowlarr
+      volumes:
+        - name: config
+          hostPath:
+            path: /mnt/user/appdata/prowlarr
+            type: DirectoryOrCreate
