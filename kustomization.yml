@@ -8,6 +8,7 @@ resources:
   - filebrowser-downloads
   - calibre
   - pyload
+  - immich
 secretGenerator:
   - name: env-secrets
     envs:
