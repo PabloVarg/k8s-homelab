@@ -37,6 +37,9 @@ spec:
             mountPath: /photos
           - name: libraries
             mountPath: /libraries
+          - name: dri
+            mountPath: /dev/dri
+            readOnly: true
         envFrom:
           - configMapRef:
               name: immich
@@ -114,3 +117,7 @@ spec:
           hostPath:
             path: /mnt/user/Files/filebrowser/srv/
             type: DirectoryOrCreate
+        - name: dri
+          hostPath:
+            path: /dev/dri
+            type: Directory
