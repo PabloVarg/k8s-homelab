@@ -1,6 +1,7 @@
 {
   "*": {
-    "make": "kubectl apply -k ."
+    "make": "kubectl apply -k {dirname}",
+    "start": "kubectl apply -k ."
   },
   "*job.yml": {
     "make": "kubectl apply -k {dirname}"
