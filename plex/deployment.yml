@@ -17,6 +17,7 @@ spec:
       labels:
         app: plex
     spec:
+      hostNetwork: true
       restartPolicy: Always
       containers:
       - name: plex
