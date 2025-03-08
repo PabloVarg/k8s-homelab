@@ -90,7 +90,7 @@ spec:
                 name: env-secrets
                 key: IMMICH_DB_DB
       - name: immich-kv
-        image: redis:bookworm
+        image: valkey/valkey:bookworm
         imagePullPolicy: Always
         livenessProbe:
           tcpSocket:
