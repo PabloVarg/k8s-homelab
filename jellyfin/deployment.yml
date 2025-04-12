@@ -9,7 +9,7 @@ spec:
   selector:
     matchLabels:
       app: jellyfin
-  replicas: 0
+  replicas: 1
   template:
     metadata:
       annotations:
@@ -37,7 +37,6 @@ spec:
             mountPath: /config
           - name: dri
             mountPath: /dev/dri
-            readOnly: true
         envFrom:
           - configMapRef:
               name: jellyfin
