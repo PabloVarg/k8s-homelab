@@ -17,6 +17,9 @@ spec:
         image: clamav/clamav:latest_base
         command: ["sh"]
         args: ["-c", "freshclam && clamscan --recursive /scan"]
+        resources:
+          limits:
+            cpu: 500m
         volumeMounts:
           - name: scan
             mountPath: /scan
