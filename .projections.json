@@ -4,6 +4,7 @@
     "start": "kubectl apply -k ."
   },
   "*job.yml": {
-    "make": "kubectl apply -k {dirname}"
+    "make": "kubectl apply -k {dirname}",
+    "console": "kubectl delete jobs.batch {dirname}"
   }
 }
