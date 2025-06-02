@@ -9,7 +9,7 @@ spec:
   selector:
     matchLabels:
       app: immich
-  replicas: 0
+  replicas: 1
   template:
     metadata:
       annotations:
@@ -24,11 +24,11 @@ spec:
         imagePullPolicy: Always
         livenessProbe:
           tcpSocket:
-            port: 8086
+            port: 8080
           initialDelaySeconds: 60
           periodSeconds: 5
         ports:
-        - containerPort: 8086
+        - containerPort: 8080
           name: immich
         volumeMounts:
           - name: config

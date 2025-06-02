@@ -9,4 +9,4 @@ data:
   UMASK: "022"
   DB_HOSTNAME: "localhost"
   REDIS_HOSTNAME: "localhost"
-  IMMICH_PORT: "8086"
+  IMMICH_PORT: ""
