@@ -27,9 +27,6 @@ spec:
             port: 8096
           initialDelaySeconds: 60
           periodSeconds: 5
-        resources:
-          limits:
-            cpu: 1
         ports:
         - containerPort: 8096
           name: jellyfin
