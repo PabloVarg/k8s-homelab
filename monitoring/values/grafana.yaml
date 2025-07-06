@@ -1,0 +1,12 @@
+service:
+  enabled: true
+  type: LoadBalancer
+  port: 3006
+persistence:
+  enabled: true
+testFramework:
+  enabled: false
+initChownData:
+  enabled: false
+chunksCache:
+  enabled: false

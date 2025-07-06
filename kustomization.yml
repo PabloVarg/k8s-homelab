@@ -10,6 +10,7 @@ resources:
   - calibre
   - pyload
   - immich
+  - monitoring
 secretGenerator:
   - name: env-secrets
     envs:

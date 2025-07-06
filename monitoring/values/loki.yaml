@@ -19,8 +19,24 @@ loki:
   ruler:
     enable_api: true
 
+resultsCache:
+  enabled: false
+
+chunksCache:
+  enabled: false
+
+test:
+  enabled: false
+
+lokiCanary:
+  enabled: false
+
 minio:
   enabled: true
+
+memberlist:
+  service:
+    publishNotReadyAddresses: true
 
 deploymentMode: SingleBinary
 

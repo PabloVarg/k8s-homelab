@@ -3,7 +3,7 @@ alloy:
     content: |-
       loki.write "default" {
         endpoint {
-          url = "http://loki.loki:3100/loki/api/v1/push"
+          url = "http://loki.monitoring:3100/loki/api/v1/push"
           tenant_id = "cluster"
         }
       }
