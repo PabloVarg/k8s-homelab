@@ -8,5 +8,3 @@ testFramework:
   enabled: false
 initChownData:
   enabled: false
-chunksCache:
-  enabled: false
