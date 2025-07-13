@@ -33,14 +33,20 @@ spec:
         volumeMounts:
           - name: data
             mountPath: /srv
+          - name: database
+            mountPath: /database
           - name: config
-            mountPath: /db
+            mountPath: /config
       volumes:
         - name: data
           hostPath:
             path: /mnt/user/Files/filebrowser/srv
             type: DirectoryOrCreate
-        - name: config
+        - name: database
           hostPath:
             path: /mnt/user/Files/filebrowser/db
+            type: DirectoryOrCreate
+        - name: config
+          hostPath:
+            path: /mnt/user/Files/filebrowser/config
             type: DirectoryOrCreate

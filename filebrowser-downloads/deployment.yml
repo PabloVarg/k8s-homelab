@@ -33,13 +33,19 @@ spec:
         volumeMounts:
           - name: data
             mountPath: /srv
+          - name: database
+            mountPath: /database
           - name: config
-            mountPath: /db
+            mountPath: /config
       volumes:
         - name: data
           hostPath:
             path: /mnt/user/Downloads
             type: Directory
+        - name: database
+          hostPath:
+            path: /mnt/user/appdata/filebrowser-downloads/db
+            type: DirectoryOrCreate
         - name: config
           hostPath:
             path: /mnt/user/appdata/filebrowser-downloads
