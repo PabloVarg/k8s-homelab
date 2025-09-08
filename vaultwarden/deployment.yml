@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vaultwarden
+  namespace: default
+  labels:
+    app: vaultwarden
+spec:
+  selector:
+    matchLabels:
+      app: vaultwarden
+  replicas: 1
+  template:
+    metadata:
+      annotations:
+        kubectl.kubernetes.io/default-container:  vaultwarden
+      labels:
+        app: vaultwarden
+    spec:
+      restartPolicy: Always
+      containers:
+      - name: vaultwarden
+        image: vaultwarden/server:latest
+        imagePullPolicy: Always
+        livenessProbe:
+          tcpSocket:
+            port: 80
+          initialDelaySeconds: 60
+          periodSeconds: 5
+        ports:
+        - containerPort: 80
+          name: vaultwarden
+        volumeMounts:
+          - name: data
+            mountPath: /data
+        envFrom:
+          - configMapRef:
+              name: vaultwarden
+      volumes:
+        - name: data
+          hostPath:
+            path: /mnt/user/appdata/vaultwarden
+            type: DirectoryOrCreate

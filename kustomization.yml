@@ -12,6 +12,7 @@ resources:
   - calibre
   - pyload
   - immich
+  - vaultwarden
 secretGenerator:
   - name: env-secrets
     envs:
