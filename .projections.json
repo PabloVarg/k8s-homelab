@@ -1,7 +1,7 @@
 {
   "*": {
     "make": "kubectl kustomize --enable-helm {dirname} | kubectl apply -f - ",
-    "start": "kubectl kustomize --enable-helm | kubectl apply -f -"
+    "start": "make install-dependencies && kubectl kustomize --enable-helm | kubectl apply -f -"
   },
   "*job.yml": {
     "make": "kubectl apply -k {dirname}",
