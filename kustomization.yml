@@ -14,7 +14,15 @@ resources:
   - pyload
   - immich
   - vaultwarden
+
 secretGenerator:
   - name: env-secrets
     envs:
       - .env
+  - name: cert-secrets
+    namespace: cert-manager
+    envs:
+      - .env
+
+generatorOptions:
+  disableNameSuffixHash: true
