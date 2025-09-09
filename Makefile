@@ -2,7 +2,6 @@
 .env:
 	@ cp environments/.example.env environments/.env
 	@ cp environments/.example.env.cert environments/.env.cert
-	@ cp environments/.example.env.infiscal environments/.env.infiscal
 
 .PHONY: install-dependencies
 install-dependencies:

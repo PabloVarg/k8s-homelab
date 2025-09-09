@@ -14,7 +14,6 @@ resources:
   - pyload
   - immich
   - vaultwarden
-  - infiscal
 
 secretGenerator:
   - name: env-secrets
@@ -24,10 +23,6 @@ secretGenerator:
     namespace: cert-manager
     envs:
       - ./environments/.env.cert
-  - name: infisical-secrets
-    namespace: vault
-    envs:
-      - ./environments/.env.infiscal
 
 generatorOptions:
   disableNameSuffixHash: true
