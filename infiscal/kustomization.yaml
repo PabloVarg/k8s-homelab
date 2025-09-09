@@ -1,0 +1,12 @@
+namespace: vault
+
+resources:
+  - namespace.yaml
+  - ingress.yaml
+
+helmCharts:
+- name: infisical-standalone
+  repo: https://dl.cloudsmith.io/public/infisical/helm-charts/helm/charts/
+  releaseName: infisical-helm-charts
+  namespace: vault
+  valuesFile: ./values/infiscal.yaml

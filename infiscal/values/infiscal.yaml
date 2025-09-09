@@ -1,0 +1,5 @@
+infiscal:
+  replicaCount: 1
+
+ingress:
+  enabled: false

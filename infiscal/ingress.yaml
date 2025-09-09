@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: cloudflare
+  name: infiscal
+  namespace:
+spec:
+  rules:
+  - host: secrets.pvarber.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: infisical-helm-charts-infisical-standalone-infisical
+            port:
+              number: 8080
+  tls:
+  - hosts:
+    - secrets.pvarber.com
+    secretName: cloudflare-account-key
