@@ -6,7 +6,6 @@ metadata:
 spec:
   selector:
     app: plex
-  type: LoadBalancer
   ports:
   - name: plex
     protocol: TCP

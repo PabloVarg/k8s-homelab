@@ -6,7 +6,6 @@ metadata:
 spec:
   selector:
     app: calibre
-  type: LoadBalancer
   ports:
   - name: calibre
     protocol: TCP

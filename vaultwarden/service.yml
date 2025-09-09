@@ -6,7 +6,6 @@ metadata:
 spec:
   selector:
     app: vaultwarden
-  type: LoadBalancer
   ports:
   - name: vaultwarden
     protocol: TCP

@@ -6,7 +6,6 @@ metadata:
 spec:
   selector:
     app: jellyfin
-  type: LoadBalancer
   ports:
   - name: jellyfin
     protocol: TCP

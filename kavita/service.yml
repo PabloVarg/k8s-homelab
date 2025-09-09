@@ -6,7 +6,6 @@ metadata:
 spec:
   selector:
     app: kavita
-  type: LoadBalancer
   ports:
   - name: kavita
     protocol: TCP

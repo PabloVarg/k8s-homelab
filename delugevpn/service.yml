@@ -6,7 +6,6 @@ metadata:
 spec:
   selector:
     app: delugevpn
-  type: LoadBalancer
   ports:
   - name: delugevpn
     protocol: TCP

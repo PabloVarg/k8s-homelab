@@ -6,7 +6,6 @@ metadata:
 spec:
   selector:
     app: filebrowser
-  type: LoadBalancer
   ports:
   - name: filebrowser
     protocol: TCP

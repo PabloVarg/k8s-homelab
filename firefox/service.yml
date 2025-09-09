@@ -6,7 +6,6 @@ metadata:
 spec:
   selector:
     app: firefox
-  type: LoadBalancer
   ports:
   - name: firefox
     protocol: TCP

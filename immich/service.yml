@@ -6,7 +6,6 @@ metadata:
 spec:
   selector:
     app: immich
-  type: LoadBalancer
   ports:
   - name: immich
     protocol: TCP
