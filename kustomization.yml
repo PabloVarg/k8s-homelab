@@ -2,7 +2,6 @@ resources:
   - ingress
   - monitoring
   - certificates
-  - plex
   - jellyfin
   - homarr
   - kavita
