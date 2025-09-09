@@ -1,7 +1,6 @@
 service:
   enabled: true
-  type: LoadBalancer
-  port: 3006
+  type: ClusterIP
 persistence:
   enabled: true
 testFramework:

@@ -2,6 +2,7 @@ namespace: monitoring
 
 resources:
   - namespace.yaml
+  - ingress.yaml
 
 helmCharts:
 - name: grafana
