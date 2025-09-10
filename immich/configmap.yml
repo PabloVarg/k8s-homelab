@@ -4,8 +4,8 @@ metadata:
   name: immich
   namespace: default
 data:
-  PUID: "99"
-  GUID: "100"
+  PUID: "1000"
+  GUID: "1000"
   UMASK: "022"
   DB_HOSTNAME: "localhost"
   REDIS_HOSTNAME: "localhost"
