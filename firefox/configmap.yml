@@ -4,7 +4,7 @@ metadata:
   name: firefox
   namespace: default
 data:
-  PUID: "0"
-  PGID: "0"
+  PUID: "1000"
+  PGID: "1000"
   TZ: "Mexico/General"
   FIREFOX_CLI: ""

@@ -9,7 +9,7 @@ spec:
   selector:
     matchLabels:
       app: firefox
-  replicas: 0
+  replicas: 1
   template:
     metadata:
       annotations:
@@ -35,24 +35,17 @@ spec:
         volumeMounts:
           - name: config
             mountPath: /config
-          - name: shm
-            mountPath: /dev/shm
           - name: dri
             mountPath: /dev/dri
             readOnly: true
         envFrom:
           - configMapRef:
               name: firefox
-        securityContext:
-          privileged: true
       volumes:
         - name: config
           hostPath:
-            path: /mnt/user/appdata/firefox-hw
+            path: /mnt/user/appdata/firefox
             type: DirectoryOrCreate
-        - name: shm
-          emptyDir:
-            medium: Memory
         - name: dri
           hostPath:
             path: /dev/dri

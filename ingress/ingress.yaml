@@ -67,6 +67,16 @@ spec:
             name: filebrowser
             port:
               name: filebrowser
+  - host: firefox.pvarber.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: firefox
+            port:
+              name: firefox
   tls:
   - hosts:
     - vault.pvarber.com
@@ -75,4 +85,5 @@ spec:
     - immich.pvarber.com
     - media.pvarber.com
     - files.pvarber.com
+    - firefox.pvarber.com
     secretName: cloudflare-account-key
