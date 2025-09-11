@@ -7,7 +7,7 @@ spec:
   selector:
     app: filebrowser-downloads
   ports:
-  - name: filebrowser-downloads
+  - name: filebrowser-d
     protocol: TCP
     port: 8083
     targetPort: filebrowser-d

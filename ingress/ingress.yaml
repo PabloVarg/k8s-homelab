@@ -67,6 +67,16 @@ spec:
             name: filebrowser
             port:
               name: filebrowser
+  - host: downloads.pvarber.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: filebrowser-downloads
+            port:
+              name: filebrowser-d
   - host: firefox.pvarber.com
     http:
       paths:
@@ -77,6 +87,36 @@ spec:
             name: firefox
             port:
               name: firefox
+  - host: torrents.pvarber.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: delugevpn
+            port:
+              name: delugevpn
+  - host: downloader.pvarber.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: pyload
+            port:
+              name: pyload
+  - host: calibre.pvarber.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: calibre
+            port:
+              name: calibre
   tls:
   - hosts:
     - vault.pvarber.com
@@ -85,5 +125,9 @@ spec:
     - immich.pvarber.com
     - media.pvarber.com
     - files.pvarber.com
+    - downloads.pvarber.com
     - firefox.pvarber.com
+    - torrents.pvarber.com
+    - downloader.pvarber.com
+    - calibre.pvarber.com
     secretName: cloudflare-account-key
