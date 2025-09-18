@@ -18,6 +18,8 @@ spec:
         app: firefox
     spec:
       restartPolicy: Always
+      securityContext:
+        fsGroup: 1000
       containers:
       - name: firefox
         image: lscr.io/linuxserver/firefox:latest

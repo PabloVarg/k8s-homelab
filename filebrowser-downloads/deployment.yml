@@ -18,6 +18,8 @@ spec:
         app: filebrowser-downloads
     spec:
       restartPolicy: Always
+      securityContext:
+        fsGroup: 1000
       containers:
       - name: filebrowser-downloads
         image: filebrowser/filebrowser:latest

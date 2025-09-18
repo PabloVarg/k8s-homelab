@@ -18,6 +18,8 @@ spec:
         app: calibre
     spec:
       restartPolicy: Always
+      securityContext:
+        fsGroup: 1000
       containers:
       - name: calibre
         image: lscr.io/linuxserver/calibre:latest

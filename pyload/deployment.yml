@@ -18,6 +18,8 @@ spec:
         app: pyload
     spec:
       restartPolicy: Always
+      securityContext:
+        fsGroup: 1000
       containers:
       - name: pyload
         image: ghcr.io/linuxserver/pyload-ng:latest

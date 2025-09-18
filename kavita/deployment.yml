@@ -18,6 +18,8 @@ spec:
         app: kavita
     spec:
       restartPolicy: Always
+      securityContext:
+        fsGroup: 1000
       containers:
       - name: kavita
         image: lscr.io/linuxserver/kavita:latest

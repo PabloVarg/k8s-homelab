@@ -18,6 +18,8 @@ spec:
         app: delugevpn
     spec:
       restartPolicy: Always
+      securityContext:
+        fsGroup: 1000
       containers:
       - name: delugevpn
         image: binhex/arch-delugevpn
