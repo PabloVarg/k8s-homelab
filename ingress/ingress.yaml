@@ -117,6 +117,16 @@ spec:
             name: calibre
             port:
               name: calibre
+  - host: paperless.pvarber.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: paperless
+            port:
+              name: paperless
   tls:
   - hosts:
     - vault.pvarber.com
@@ -130,4 +140,5 @@ spec:
     - torrents.pvarber.com
     - downloader.pvarber.com
     - calibre.pvarber.com
+    - paperless.pvarber.com
     secretName: cloudflare-account-key

@@ -13,6 +13,7 @@ resources:
   - pyload
   - immich
   - vaultwarden
+  - paperless
 
 secretGenerator:
   - name: env-secrets
