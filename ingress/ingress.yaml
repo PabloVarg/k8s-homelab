@@ -4,7 +4,6 @@ metadata:
   annotations:
     cert-manager.io/cluster-issuer: cloudflare
   name: homelab
-  namespace:
 spec:
   rules:
   - host: vault.pvarber.com
