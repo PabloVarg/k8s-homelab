@@ -4,6 +4,6 @@ metadata:
   name: pyload
   namespace: default
 data:
-  PUID: "99"
-  GUID: "100"
+  PUID: "1000"
+  GUID: "1000"
   TZ: "Mexico/General"

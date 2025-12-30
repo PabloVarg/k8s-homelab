@@ -13,7 +13,7 @@ spec:
         app: clamav
     spec:
       securityContext:
-        fsGroup: 100
+        fsGroup: 1000
       containers:
       - name: clamav
         image: clamav/clamav:latest_base

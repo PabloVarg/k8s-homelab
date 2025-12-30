@@ -4,6 +4,6 @@ metadata:
   name: calibre
   namespace: default
 data:
-  PUID: "99"
-  PGID: "100"
+  PUID: "1000"
+  PGID: "1000"
   TZ: "Mexico/General"
