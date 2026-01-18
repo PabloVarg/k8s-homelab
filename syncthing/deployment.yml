@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: syncthing
+  namespace: default
+  labels:
+    app: syncthing
+spec:
+  selector:
+    matchLabels:
+      app: syncthing
+  replicas: 1
+  template:
+    metadata:
+      annotations:
+        kubectl.kubernetes.io/default-container:  syncthing
+      labels:
+        app: syncthing
+    spec:
+      restartPolicy: Always
+      securityContext:
+        fsGroup: 1000
+      containers:
+      - name: syncthing
+        image: lscr.io/linuxserver/syncthing:latest
+        imagePullPolicy: Always
+        livenessProbe:
+          tcpSocket:
+            port: 8384
+          initialDelaySeconds: 60
+          periodSeconds: 5
+        ports:
+        - containerPort: 8384
+          name: syncthing
+        volumeMounts:
+          - name: config
+            mountPath: /config
+          - name: data
+            mountPath: /data
+        envFrom:
+          - configMapRef:
+              name: syncthing
+      volumes:
+        - name: config
+          hostPath:
+            path: /mnt/user/appdata/syncthing
+            type: DirectoryOrCreate
+        - name: data
+          hostPath:
+            path: /mnt/user/Files/syncthing
+            type: DirectoryOrCreate
