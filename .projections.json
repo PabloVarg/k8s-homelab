@@ -1,7 +1,8 @@
 {
   "*": {
     "make": "kubectl kustomize --enable-helm {dirname} | kubectl apply -f - ",
-    "start": "make install-dependencies && kubectl kustomize --enable-helm | kubectl apply -f -"
+    "start": "make install-dependencies && kubectl kustomize --enable-helm | kubectl apply -f -",
+    "console": "rm -rf */**/charts"
   },
   "*job.yml": {
     "make": "kubectl apply -k {dirname}",
