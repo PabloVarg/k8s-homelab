@@ -126,16 +126,6 @@ spec:
             name: paperless
             port:
               name: paperless
-  - host: sync.pvarber.com
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: syncthing
-            port:
-              name: syncthing
   tls:
   - hosts:
     - vault.pvarber.com
@@ -150,5 +140,4 @@ spec:
     - downloader.pvarber.com
     - calibre.pvarber.com
     - paperless.pvarber.com
-    - sync.pvarber.com
     secretName: cloudflare-account-key

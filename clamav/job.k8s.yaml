@@ -23,27 +23,17 @@ spec:
           limits:
             cpu: 500m
         volumeMounts:
+          - name: scan
+            mountPath: /scan
           - name: signatures
             mountPath: /var/lib/clamav
-          - name: downloads
-            mountPath: /scan/downloads
-            readOnly: true
-            recursiveReadOnly: Enabled
-          - name: syncthing
-            mountPath: /scan/syncthing
-            readOnly: true
-            recursiveReadOnly: Enabled
       restartPolicy: OnFailure
       volumes:
+        - name: scan
+          hostPath:
+            path: /mnt/user/Downloads/downloads
+            type: Directory
         - name: signatures
           hostPath:
             path: /mnt/user/appdata/clamav
             type: DirectoryOrCreate
-        - name: downloads
-          hostPath:
-            path: /mnt/user/Downloads/downloads
-            type: Directory
-        - name: syncthing
-          hostPath:
-            path: /mnt/user/Files/syncthing
-            type: Directory

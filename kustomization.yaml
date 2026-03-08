@@ -7,13 +7,13 @@ resources:
   - kavita
   - delugevpn
   - firefox
+  - filebrowser
   - filebrowser-downloads
   - calibre
   - pyload
   - immich
   - vaultwarden
   - paperless
-  - syncthing
 
 secretGenerator:
   - name: env-secrets
