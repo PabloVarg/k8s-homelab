@@ -1,0 +1,3 @@
+resources:
+  - deployment.k8s.yaml
+  - service.k8s.yaml

@@ -40,20 +40,6 @@ spec:
         envFrom:
           - configMapRef:
               name: paperless
-      - name: paperless-kv
-        image: valkey/valkey:bookworm
-        imagePullPolicy: Always
-        livenessProbe:
-          tcpSocket:
-            port: 6379
-          initialDelaySeconds: 60
-          periodSeconds: 5
-        ports:
-        - containerPort: 6379
-          name: paperless-kv
-        volumeMounts:
-          - name: kv-data
-            mountPath: /data
       volumes:
         - name: config
           hostPath:
@@ -62,8 +48,4 @@ spec:
         - name: media
           hostPath:
             path: /mnt/user/appdata/paperless/media
-            type: DirectoryOrCreate
-        - name: kv-data
-          hostPath:
-            path: /mnt/user/appdata/paperless/kv
             type: DirectoryOrCreate
