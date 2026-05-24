@@ -1,4 +1,4 @@
 resources:
-  - deployment.yml
-  - configmap.yml
-  - service.yml
+  - deployment.k8s.yaml
+  - configmap.k8s.yaml
+  - service.k8s.yaml

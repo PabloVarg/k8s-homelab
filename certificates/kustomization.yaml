@@ -1,2 +1,2 @@
 resources:
-  - cloudflare-issuer.yaml
+  - cloudflare-issuer.k8s.yaml
