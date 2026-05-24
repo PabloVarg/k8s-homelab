@@ -1,0 +1,19 @@
+authentik:
+    error_reporting:
+        enabled: false
+global:
+    env:
+      - name: AUTHENTIK_POSTGRESQL__HOST
+        value: main-cluster-rw.storage
+      - name: AUTHENTIK_POSTGRESQL__PASSWORD
+        valueFrom:
+          secretKeyRef:
+            name: main-cluster-app
+            key: password
+      - name: AUTHENTIK_POSTGRESQL__USER
+        value: app
+      - name: AUTHENTIK_SECRET_KEY
+        valueFrom:
+          secretKeyRef:
+            name: env-secrets
+            key: AUTHENTIK_SECRET_KEY

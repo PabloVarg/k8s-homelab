@@ -1,0 +1,8 @@
+resources:
+  - namespace.k8s.yaml
+
+helmCharts:
+  - name: reflector
+    repo: https://emberstack.github.io/helm-charts
+    releaseName: reflector
+    namespace: reflection

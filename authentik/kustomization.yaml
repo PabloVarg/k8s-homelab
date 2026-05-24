@@ -1,0 +1,5 @@
+helmCharts:
+  - name: authentik
+    repo: https://charts.goauthentik.io
+    releaseName: authentik
+    valuesFile: values.yaml

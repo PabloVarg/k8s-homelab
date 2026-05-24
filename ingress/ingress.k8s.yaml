@@ -126,6 +126,16 @@ spec:
             name: paperless
             port:
               name: paperless
+  - host: auth.pvarber.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: authentik-server
+            port:
+              name: http
   tls:
   - hosts:
     - vault.pvarber.com
@@ -140,4 +150,5 @@ spec:
     - downloader.pvarber.com
     - calibre.pvarber.com
     - paperless.pvarber.com
+    - auth.pvarber.com
     secretName: cloudflare-account-key
