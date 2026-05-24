@@ -7,3 +7,17 @@ testFramework:
   enabled: false
 initChownData:
   enabled: false
+assertNoLeakedSecrets: false
+grafana.ini:
+  server:
+    root_url: https://grafana.pvarber.com
+  auth:
+    oauth_auto_login: false
+  auth.generic_oauth:
+    name: authentik
+    enabled: true
+    scopes: "openid profile email entitlements"
+    auth_url: "https://auth.pvarber.com/application/o/authorize/"
+    token_url: "https://auth.pvarber.com/application/o/token/"
+    api_url: "https://auth.pvarber.com/application/o/userinfo/"
+    role_attribute_path: contains(entitlements, 'Grafana Admins') && 'Admin' || contains(entitlements, 'Grafana Editors') && 'Editor' || 'Viewer'
