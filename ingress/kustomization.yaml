@@ -1,2 +1,2 @@
 resources:
-  - ingress.yaml
+  - ingress.k8s.yaml
