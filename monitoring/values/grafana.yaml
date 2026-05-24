@@ -7,7 +7,6 @@ testFramework:
   enabled: false
 initChownData:
   enabled: false
-assertNoLeakedSecrets: false
 grafana.ini:
   server:
     root_url: https://grafana.pvarber.com
