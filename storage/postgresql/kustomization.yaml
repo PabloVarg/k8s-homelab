@@ -1,0 +1,12 @@
+namespace: storage
+
+resources:
+  - cluster.k8s.yaml
+  - db
+
+helmCharts:
+  - name: cloudnative-pg
+    repo: https://cloudnative-pg.github.io/charts
+    releaseName: cloudnative-pg
+    namespace: storage
+    includeCRDs: true

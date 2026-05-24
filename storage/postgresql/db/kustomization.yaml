@@ -1,0 +1,2 @@
+resources:
+  - authentik.db.k8s.yaml
