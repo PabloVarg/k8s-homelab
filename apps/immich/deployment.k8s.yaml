@@ -91,17 +91,6 @@ spec:
               secretKeyRef:
                 name: env-secrets
                 key: IMMICH_DB_DB
-      - name: immich-kv
-        image: valkey/valkey:bookworm
-        imagePullPolicy: Always
-        livenessProbe:
-          tcpSocket:
-            port: 6379
-          initialDelaySeconds: 60
-          periodSeconds: 5
-        ports:
-        - containerPort: 6379
-          name: immich-kv
       volumes:
         - name: config
           hostPath:

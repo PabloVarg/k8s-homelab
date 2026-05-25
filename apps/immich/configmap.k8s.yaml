@@ -8,5 +8,6 @@ data:
   GUID: "1000"
   UMASK: "022"
   DB_HOSTNAME: "localhost"
-  REDIS_HOSTNAME: "localhost"
+  REDIS_HOSTNAME: "valkey.storage"
+  REDIS_DBINDEX: "2"
   IMMICH_PORT: ""

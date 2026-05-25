@@ -9,4 +9,4 @@ data:
   TZ: "Mexico/General"
   PAPERLESS_PORT: "8000"
   PAPERLESS_URL: "https://paperless.pvarber.com"
-  PAPERLESS_REDIS: "redis://valkey.storage:6379/paperless"
+  PAPERLESS_REDIS: "redis://valkey.storage:6379/1"
