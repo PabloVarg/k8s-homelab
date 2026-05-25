@@ -49,56 +49,17 @@ spec:
           - name: DB_USERNAME
             valueFrom:
               secretKeyRef:
-                name: env-secrets
-                key: IMMICH_DB_USER
+                name: main-cluster-app
+                key: user
           - name: DB_PASSWORD
             valueFrom:
               secretKeyRef:
-                name: env-secrets
-                key: IMMICH_DB_PASSWORD
-          - name: DB_DATABASE_NAME
-            valueFrom:
-              secretKeyRef:
-                name: env-secrets
-                key: IMMICH_DB_DB
-      - name: immich-db
-        image: tensorchord/pgvecto-rs:pg16-v0.2.0
-        imagePullPolicy: Always
-        livenessProbe:
-          tcpSocket:
-            port: 5432
-          initialDelaySeconds: 60
-          periodSeconds: 5
-        ports:
-        - containerPort: 5432
-          name: immich-db
-        volumeMounts:
-          - name: data
-            mountPath: /var/lib/postgresql/data
-        env:
-          - name: POSTGRES_USER
-            valueFrom:
-              secretKeyRef:
-                name: env-secrets
-                key: IMMICH_DB_USER
-          - name: POSTGRES_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: env-secrets
-                key: IMMICH_DB_PASSWORD
-          - name: POSTGRES_DB
-            valueFrom:
-              secretKeyRef:
-                name: env-secrets
-                key: IMMICH_DB_DB
+                name: main-cluster-app
+                key: password
       volumes:
         - name: config
           hostPath:
             path: /mnt/user/appdata/immich
-            type: DirectoryOrCreate
-        - name: data
-          hostPath:
-            path: /mnt/user/appdata/PostgreSQL_Immich
             type: DirectoryOrCreate
         - name: photos
           hostPath:

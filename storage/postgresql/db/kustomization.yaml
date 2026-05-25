@@ -1,2 +1,4 @@
 resources:
   - authentik.db.k8s.yaml
+  - grafana.db.k8s.yaml
+  - immich.db.k8s.yaml
