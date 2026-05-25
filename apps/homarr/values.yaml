@@ -1,0 +1,18 @@
+database:
+  type: postgresql
+envSecrets:
+  dbCredentials:
+    existingSecret: "main-cluster-app"
+    dbUrlKey: "uri"
+  dbEncryption:
+    existingSecret: "env-secrets"
+    key: "HOMARR_SECRET_ENCRYPTION_KEY"
+  authOidcCredentials:
+    existingSecret: "env-secrets"
+    oidcClientId: "HOMARR_OIDC_CLIENT_ID"
+    oidcClientSecret: "HOMARR_OIDC_CLIENT_SECRET"
+env:
+  AUTH_PROVIDERS: oidc
+  AUTH_OIDC_ISSUER: https://auth.pvarber.com/application/o/homarr/
+  AUTH_OIDC_URI: https://auth.pvarber.com/application/o/authorize
+  AUTH_OIDC_CLIENT_NAME: authentik

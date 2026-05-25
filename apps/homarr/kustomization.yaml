@@ -1,3 +1,5 @@
-resources:
-  - deployment.k8s.yaml
-  - service.k8s.yaml
+helmCharts:
+  - name: homarr
+    repo: https://homarr-labs.github.io/charts
+    releaseName: homarr
+    valuesFile: values.yaml

@@ -25,7 +25,7 @@ spec:
           service:
             name: homarr
             port:
-              name: homarr
+              name: app
   - host: kavita.pvarber.com
     http:
       paths:
